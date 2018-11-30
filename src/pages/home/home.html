@@ -7,8 +7,18 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item justify-content-center align-items-center>
+    <ion-label text-center>
+      <h4>{{this.account}}</h4>
+      <h1>{{this.balance}}</h1>
+    </ion-label>
+  </ion-item>
+
+  <div padding>
+    <button ion-button full (click)="goSendPage()">Enviar</button>
+  </div>
+
+  <div padding>
+    <button ion-button full (click)="goReceivePage()">Receber</button>
+  </div>
 </ion-content>
