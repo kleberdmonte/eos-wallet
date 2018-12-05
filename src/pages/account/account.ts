@@ -15,8 +15,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AccountPage {
 
-  account: string;
-  key: string;
+  account: string = "novaturma112";
+  key: string = "5KTLYYkmHiegLShdcgDbRpPEVX42hMgBM6Ce4zJDbR2jseHQnHo";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
