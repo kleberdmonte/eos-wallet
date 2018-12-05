@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>SendPage</ion-title>
+    <ion-title>Enviar</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Account</ion-label>
+    <ion-label floating>Conta</ion-label>
     <ion-input [(ngModel)]="account"></ion-input>
   </ion-item>
   
@@ -24,7 +24,11 @@
     <ion-input [(ngModel)]="value"></ion-input>
   </ion-item>
 
+  <div padding class="content">
+    <button ion-button full (click)="qrCodeScan()">Escanear</button>
+  </div>
+
   <div padding>
-    <button ion-button full>Enviar</button>
+    <button ion-button full (click)="send()">Enviar</button>
   </div>
 </ion-content>

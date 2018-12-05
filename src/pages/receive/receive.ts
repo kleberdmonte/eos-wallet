@@ -14,16 +14,13 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ReceivePage {
 
-  qrData: object;
+  qrData: string;
   createdCode: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.qrData = {
-      "publicKey": navParams.get('publicKey'),
-      "account": navParams.get('account')
-    }
+    this.qrData = navParams.get('account');
 
-    this.createdCode = JSON.stringify(this.qrData);
+    this.createdCode = this.qrData;
   }
 
   ionViewDidLoad() {
