@@ -3,6 +3,7 @@ import { SendPage } from './../send/send';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ReceivePage } from '../receive/receive';
+import { EtheriumProvider } from '../../providers/etherium';
 
 @Component({
   selector: 'page-home',
@@ -12,28 +13,31 @@ export class HomePage {
 
   account: string;
   key: string;
-  balance: string;
+  balance: number;
   balanceUSD: string;
   publicKey: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eos: EosProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private etheriumProvider: EtheriumProvider) {
     this.account = this.navParams.get("account");
-    this.key = this.navParams.get("key");
-    this.publicKey = "EOS59Ko3iRjunwmUtm3eZ64Ugzy1h9LFc8mdgnWkEgh95Ctytx1Fd";
+    // this.key = this.navParams.get("key");
+    // this.publicKey = "EOS59Ko3iRjunwmUtm3eZ64Ugzy1h9LFc8mdgnWkEgh95Ctytx1Fd";
 
-    this.eos.setCredentials(this.account, this.key);
+    // this.eos.setCredentials(this.account, this.key);
   }
 
-  ionViewWillLoad() {    
-    this.eos.getBalance()
-      .then(response => {
-        this.balance = response[0];
-        const eos = this.balance.split(' ')[0].trim();
-        this.eos.getEosToUSD(Number.parseFloat(eos))
-          .then(result => this.balanceUSD = result.toString())
-          .catch(error => alert(error));
-      })
-      .catch(error => alert(error));
+  async ionViewWillLoad() {    
+    this.balance = await this.etheriumProvider.getUserBalance();
+    this.balanceUSD = await this.etheriumProvider.getEtheriumToUSD(this.balance);
+
+    // this.eos.getBalance()
+    //   .then(response => {
+    //     this.balance = response[0];
+    //     const eos = this.balance.split(' ')[0].trim();
+    //     this.eos.getEosToUSD(Number.parseFloat(eos))
+    //       .then(result => this.balanceUSD = result.toString())
+    //       .catch(error => alert(error));
+    //   })
+    //   .catch(error => alert(error));
   }
 
   goSendPage() {

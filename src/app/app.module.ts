@@ -13,6 +13,7 @@ import { AccountPage } from '../pages/account/account';
 import { EosProvider } from '../providers/eos/eos';
 import { ReceivePage } from '../pages/receive/receive';
 import { HttpClientModule } from '@angular/common/http';
+import { EtheriumProvider } from '../providers/etherium';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EosProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    EtheriumProvider
   ]
 })
 export class AppModule {}

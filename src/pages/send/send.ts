@@ -2,6 +2,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EosProvider } from '../../providers/eos/eos';
+import { EtheriumProvider } from '../../providers/etherium';
 
 /**
  * Generated class for the SendPage page.
@@ -20,7 +21,7 @@ export class SendPage {
   value: string;
   cameraPermission: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner, private eos: EosProvider) {    
+  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner, private etheriumProvider: EtheriumProvider) {    
     // this.prepare();
   }
 
@@ -70,7 +71,7 @@ export class SendPage {
   }
 
   send() {
-    this.eos.transfer(this.account, Number.parseFloat(this.value))
+    this.etheriumProvider.transfer(this.account, Number.parseFloat(this.value))
       .then(result => this.navCtrl.pop())
       .catch(err => alert(err));
   }

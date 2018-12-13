@@ -1,6 +1,7 @@
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { EtheriumProvider } from '../../providers/etherium';
 
 /**
  * Generated class for the AccountPage page.
@@ -15,10 +16,11 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AccountPage {
 
-  account: string = "novaturma112";
+  account: string = "0x89DDdE9b53fDD23A6c51c3dA0b34B8BCC2a77b95";
   key: string = "5KTLYYkmHiegLShdcgDbRpPEVX42hMgBM6Ce4zJDbR2jseHQnHo";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
   }
 
   ionViewDidLoad() {
