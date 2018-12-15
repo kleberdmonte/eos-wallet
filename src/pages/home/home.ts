@@ -1,3 +1,4 @@
+import { MapPage } from './../map/map';
 import { EosProvider } from './../../providers/eos/eos';
 import { SendPage } from './../send/send';
 import { Component } from '@angular/core';
@@ -6,11 +7,10 @@ import { ReceivePage } from '../receive/receive';
 import { EtheriumProvider } from '../../providers/etherium';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: "page-home",
+  templateUrl: "home.html"
 })
 export class HomePage {
-
   account: string;
   key: string;
   balance: number;
@@ -41,10 +41,17 @@ export class HomePage {
   }
 
   goSendPage() {
-    this.navCtrl.push(SendPage, { account: '', balance: this.balance });
+    this.navCtrl.push(SendPage, { account: "", balance: this.balance });
   }
 
   goReceivePage() {
-    this.navCtrl.push(ReceivePage, { account: this.account, publicKey: this.publicKey });
+    this.navCtrl.push(ReceivePage, {
+      account: this.account,
+      publicKey: this.publicKey
+    });
+  }
+
+  goMapPage() {
+    this.navCtrl.push(MapPage);
   }
 }
