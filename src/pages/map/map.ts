@@ -41,8 +41,6 @@ export class MapPage {
     //   API_KEY_FOR_BROWSER_DEBUG: "(your api key for `http://`)"
     // });
 
-    // let ma 
-
     let element: HTMLElement = document.getElementById("map_canvas");
 
     this.map = GoogleMaps.create(element);
@@ -67,29 +65,5 @@ export class MapPage {
     marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
       alert("clicked");
     });
-  }
-
-  startNavigating() {
-
-    let directionsService = new google.maps.DirectionsService;
-    let directionsDisplay = new google.maps.DirectionsRenderer;
-
-    directionsDisplay.setMap(this.map);
-    directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-
-    directionsService.route({
-      origin: 'adelaide',
-      destination: 'adelaide oval',
-      travelMode: google.maps.TravelMode['DRIVING']
-    }, (res, status) => {
-
-      if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(res);
-      } else {
-        console.warn(status);
-      }
-
-    });
-
   }
 }
